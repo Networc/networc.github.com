@@ -6,5 +6,7 @@ Thumbs.db
 
 !.gitkeep
 
+*~
+
 .rbenv-version
 .rvmrc
