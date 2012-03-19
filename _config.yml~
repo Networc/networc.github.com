@@ -9,14 +9,14 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Andrew C. Reed
-tagline: 
+title : Jekyll Bootstrap
+tagline: Site Tagline
 author :
-  name : Andrew Reed
-  email : andrew.reed@west-point.org
-  github : Networc
-  twitter : 
-  feedburner : 
+  name : Name Lastname
+  email : blah@email.test
+  github : username
+  twitter : username
+  feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
