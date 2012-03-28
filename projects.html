@@ -1,0 +1,27 @@
+---
+layout: default
+title: Projects
+description: Andrew C. Reed's open source projects.
+---
+<p><h1>My Open Source Projects</h1></p>
+
+<div id="github-projects"></div>
+
+<script type="text/javascript" charset="utf-8">
+    $('#github-projects').html(''); 
+    $.githubUser('Networc', function(data) {    
+    
+    var repos = data.user.repositories;
+    repos.sort(function(a,b) {
+      return b.watchers - a.watchers;
+    });
+    
+    $(repos).each(function() {
+      $('#github-projects').append("\
+<p>\
+<h1><a href='" + this.url + "'>" + this.name + "</a></h1>\
+"+this.description+"\
+</p>");
+    });
+  });
+</script>
