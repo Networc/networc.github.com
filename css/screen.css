@@ -134,6 +134,7 @@ ul.posts {
 
     .site .footer .rss {
       float: right;
+      display: inline-block;
     }
 
       .site .footer .rss img {
