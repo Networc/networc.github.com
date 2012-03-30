@@ -115,6 +115,15 @@ ul.posts {
     color: #aaa;
   }
 
+  .site .social {
+    display: inline;
+  }
+
+    .site .social .share {
+      float: left;
+      margin-right: 2px;
+    }
+
   .site .footer {
     font-size: 80%;
     color: #666;
@@ -144,10 +153,6 @@ ul.posts {
         float: left;
         margin-right: 4px;
       }
-
-  .site .share {
-    float: left;
-  }
 
 /*****************************************************************************/
 /*
