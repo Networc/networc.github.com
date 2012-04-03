@@ -12,3 +12,11 @@ All "original content" is Copyright Andrew C. Reed. This includes, but is not ne
 All other directories and files are MIT licensed. This includes the code used to generate my webpages.
 
 As an example, the content of a blog post would be Copyright Andrew C. Reed; however, any custom YAML variables (and associated code) would be MIT licensed.
+
+###Attribution
+####Code I've Used
+
+* Theme and code from [Tom Preston-Werner](https://github.com/mojombo/mojombo.github.com)
+* Meta data generation code from [Bilal Hussain](https://github.com/Bilalh/bilalh.github.com)
+* GitHub repo listing code from [Matthew Deiters](https://github.com/mdeiters/mdeiters.github.com)
+* Sitemap generation code from [Jade](https://github.com/plusjade/jekyll-bootstrap)
