@@ -13,7 +13,7 @@ Over the last year and a half, I have had the opportunity to work on the impleme
 
 The security concern above was my initial inspiration for Keyshanc. I have since thought of other scenarios that might benefit from Keyshanc (discussed later).
 
-Note: While the military can use the [Lightweight Portable Security (LPS)](http://www.spi.dod.mil) bootable CD to provide users with a secure workstation, many businesses may not have the funding or the ability to produce such a CD.
+Note: While the military can use the [Lightweight Portable Security (LPS)](http://www.spi.dod.mil/lipose.htm) bootable CD to provide users with a secure workstation, many businesses may not have the funding or the ability to produce such a CD.
 
 ##Goals
 
