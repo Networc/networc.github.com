@@ -11,7 +11,7 @@ All "original content" is Copyright Andrew C. Reed. This includes, but is not ne
 
 All other directories and files are MIT licensed. This includes the code used to generate my webpages.
 
-As an example, the content of a blog post would be Copyright Andrew C. Reed; however, any custom YAML variables (and associated code) would be MIT licensed.
+As an example, the content of a blog post would be © Copyright Andrew C. Reed; however, my use of a custom YAML variable for Twitter hashtags (and associated Tweet button code) would be MIT licensed.
 
 ###Attribution
 ####Code I've Used
