@@ -34,7 +34,7 @@ I set out to devise a solution that would:
 
 ##Design
 
-Simply put, Keyshanc is an algorithm that shuffles the keys of the keyboard based on a "password". It relies on a simple substitution cipher \- for any given password, a plaintext character will always result in the same ciphertext character being sent to the receiving application. Please read my [Keyshanc Code Walkthrough](http://andrewcreed.com/2012/04/06/keyshanc-code-walkthrough.html) for a more thorough discussion on the algorithm.
+Simply put, Keyshanc is an algorithm that shuffles the keys of the keyboard based on a "password". It relies on a simple substitution cipher \- for any given password, a plaintext character will always result in the same ciphertext character being sent to the receiving application. Please read my [Keyshanc Code Walkthrough](http://andrewcreed.com/2012/04/06/keyshanc-code-walkthrough.html) for a more thorough discussion of the algorithm.
 
 In order to use Keyshanc, both the keyboard \(or a device placed between the keyboard and computer\) and the receiving application must support Keyshanc and must be set to use the same password. Any software or devices between the keyboard and receiving application will only be able to capture the ciphertext characters.
 
