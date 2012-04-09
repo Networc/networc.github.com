@@ -12,9 +12,9 @@ Keyshanc \(short for Keyboard SHA-based Encrypter\) is my attempt to thwart keyl
 
 ##Background
 
-Over the last year and a half, I have had the opportunity to work on the implementation of a medium-scale virtual desktop infrastructure (VDI) (approx. 2300 total seats). One of the benefits of a VDI is the ability to seamlessly provide the same desktop to a user whether they are working locally or remotely (e.g. telework). This allows the user to access their data and applications from home while the virtual desktop remains on the company's LAN; however, allowing a user to connect to a virtual desktop from their personal computer poses some security concerns. Chief among these risks are keyloggers since the user's primary interaction with their virtual desktop is via mouse and keyboard input.
+Over the last year and a half, I have had the opportunity to work on the implementation of a medium-scale virtual desktop infrastructure \(VDI\) \(approx. 2300 total seats\). One of the benefits of a VDI is the ability to seamlessly provide the same desktop to a user whether they are working locally or remotely \(e.g. telework\). This allows the user to access their data and applications from home while the virtual desktop remains on the company's LAN; however, allowing a user to connect to a virtual desktop from their personal computer poses some security concerns. Chief among these risks are keyloggers since the user's primary interaction with their virtual desktop is via mouse and keyboard input.
 
-The security concern above was my initial inspiration for Keyshanc. I have since thought of other scenarios that might benefit from Keyshanc (discussed later).
+The security concern above was my initial inspiration for Keyshanc. I have since thought of other scenarios that might benefit from Keyshanc \(discussed later\).
 
 Note: While the military can use the [Lightweight Portable Security (LPS)](http://www.spi.dod.mil/lipose.htm) bootable CD to provide users with a secure workstation, many businesses may not have the funding or the ability to produce such a CD.
 
@@ -34,7 +34,7 @@ I set out to devise a solution that would:
 
 ##Design
 
-Simply put, Keyshanc is an algorithm that shuffles the keys of the keyboard based on a "password". It relies on a simple substitution cipher \- for any given password, a plaintext character will always result in the same ciphertext character being sent to the receiving application. Please read my [Keyshanc Code Walkhrough](http://andrewcreed.com/2012/04/06/keyshanc-code-walkthrough.html) for a more thorough discussion on the algorithm.
+Simply put, Keyshanc is an algorithm that shuffles the keys of the keyboard based on a "password". It relies on a simple substitution cipher \- for any given password, a plaintext character will always result in the same ciphertext character being sent to the receiving application. Please read my [Keyshanc Code Walkthrough](http://andrewcreed.com/2012/04/06/keyshanc-code-walkthrough.html) for a more thorough discussion on the algorithm.
 
 In order to use Keyshanc, both the keyboard \(or a device placed between the keyboard and computer\) and the receiving application must support Keyshanc and must be set to use the same password. Any software or devices between the keyboard and receiving application will only be able to capture the ciphertext characters.
 
