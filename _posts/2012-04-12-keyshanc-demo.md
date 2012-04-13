@@ -10,9 +10,9 @@ This post demonstrates how a Keyshanc-enabled website might function. The underl
 <br />
 <form action="" id="myForm" >
 Input:<br />
-<input type="text" name="inText" onKeyPress="convertString()"/><br />
+<textarea rows="4" cols="60" name="inText" onKeyPress="convertString()"/></textarea><br />
 Output:<br />
-<input type="text" name="outText" /><br />
+<textarea rows="4" cols="60" name="outText" /></textarea><br />
 <br />
 This entire post is MIT Licensed.
 
