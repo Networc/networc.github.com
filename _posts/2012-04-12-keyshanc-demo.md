@@ -7,6 +7,7 @@ keywords: keyshanc, keyboard encrypter, keyboard encryption, teensyduino
 hashtag: keyshanc
 ---
 This post demonstrates how a Keyshanc-enabled website might function. The underlying Javascript is hard-coded to decrypt the input text according to the Keyshanc Teensyduino's first default password \(\[F1\], aragorn\).<br />
+<br />
 <form action="" id="myForm" >
 Input:<br />
 <input type="text" name="inText" onKeyPress="convertString()"/><br />
