@@ -6,6 +6,8 @@ description: A demo of a Keyshanc-enabled webpage.
 keywords: keyshanc, keyboard encrypter, keyboard encryption, teensyduino
 hashtag: keyshanc
 ---
+<b>\[2012\-04\-16 Update:\]</b> I have ported Keyshanc to Javascript and created a new demo [here](http://andrewcreed.com/2012/04/17/keyshanc-ported-to-javascript.html).<br />
+<br />
 This post demonstrates how a Keyshanc-enabled website might function. The underlying Javascript is hard-coded to decrypt the input text according to the Keyshanc Teensyduino's first default password \(\[F1\], aragorn\).<br />
 <br />
 <form action="" id="myForm" >
