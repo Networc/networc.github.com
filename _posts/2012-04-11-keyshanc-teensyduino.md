@@ -12,7 +12,7 @@ The Keyshanc Teensyduino is a device that encrypts keystrokes based on the [Keys
 The device is intended to provide privacy from the keyboard\-to\-the\-application on compromised \(a.k.a. "monitored"\) and/or untrusted workstations.
 
 ###What software is required?
-No software is required on the workstation. The only software requirement is that the receiving application \(or website\) must be Keyshanc\-enabled. In other words, the receiving application must allow the user to input a Keyshanc password \(preferrably via a graphical keyboard\) and then decrypt the keystrokes. I have an example console program available on [GitHub](https://github.com/Networc/keyshanc/blob/master/examples/consoleApp/main.cpp) and a webpage demo [here](http://andrewcreed.com/2012/04/17/keyshanc-ported-to-javascript.html).
+No software is required on the workstation. The only software requirement is that the receiving application \(or website\) must be Keyshanc\-enabled. In other words, the receiving application must allow the user to input a Keyshanc password \(preferrably via a graphical keyboard\) and then decrypt the keystrokes. I have an example console program available on [GitHub](https://github.com/Networc/keyshanc/blob/master/examples/consoleApp/main.cpp) and a webpage demo [here](http://andrewcreed.com/2012/04/16/keyshanc-ported-to-javascript.html).
 
 <i>Note</i>: Software <b>is</b> required to initially program the Keyshanc Teensyduino, and is described below.
 
