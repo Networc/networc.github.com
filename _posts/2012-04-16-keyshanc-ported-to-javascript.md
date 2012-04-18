@@ -14,14 +14,6 @@ Use "bilbo" as the Keyshanc password and paste the following into the "Input" te
 <pre><code>7Ao!4KA'!&lt;E!zdKA'!&lt;Roa!P55!PA^!KA!&lt;Ro!^PdpAoVV!zKA^!&lt;Roa</code></pre><br />
 <br />
 
-<form action="" id="myForm" >
-Keyshanc Password:<br />
-<input type="password" name="password" /><input type="button" value="Keyshanc" onclick="keyshanc(myForm.password.value)" /><br />
-Input:<br />
-<textarea rows="4" cols="60" name="inText" onKeyPress="decryptKeyshanc()"></textarea><br />
-Output:<br />
-<textarea rows="4" cols="60" name="outText"></textarea><br />
-<br />
-</form>
+{% include keyshancform.html %}
 
 This entire post is MIT Licensed.
