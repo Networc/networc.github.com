@@ -135,6 +135,6 @@ function encryptKeyshanc() {
 
 function generateTweet(tweetText) {
     $('#dynamicTweet').html("\
-<iframe allowtransparency='true' frameborder='0' scrolling='no' src='http://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText + " #keyshanc decode at&url=http://andrewcreed.com/2012/04/16/keyshanc-ported-to-javascript.html&counturl=http://andrewcreed.com/2012/04/18/tweet-with-keyshanc.html&count=none' style='width:115px; height:21px;'></iframe>\
+<iframe allowtransparency='true' frameborder='0' scrolling='no' src='http://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText + "%20decode%20at%20http%3A%2F%2Fandrewcreed.com%2F2012%2F04%2F16%2Fkeyshanc-ported-to-javascript.html&hashtags=keyshanc&count=none' style='width:115px; height:21px;'></iframe>\
 <br />");
 }
