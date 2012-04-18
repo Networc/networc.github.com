@@ -10,11 +10,10 @@ hashtag: keyshanc
 <br />
 This post demonstrates how a Keyshanc-enabled website might function. The underlying Javascript is hard-coded to decrypt the input text according to the Keyshanc Teensyduino's first default password \(\[F1\], aragorn\).<br />
 <br />
-<form action="" id="myForm" >
 Input:<br />
-<textarea rows="4" cols="60" name="inText" onKeyPress="convertString()"/></textarea><br />
+<textarea rows="4" cols="60" id="inText" onKeyPress="convertString()"/></textarea><br />
 Output:<br />
-<textarea rows="4" cols="60" name="outText" /></textarea><br />
+<textarea rows="4" cols="60" id="outText" /></textarea><br />
 <br />
 This entire post is MIT Licensed.
 
@@ -23,7 +22,7 @@ This entire post is MIT Licensed.
 var keyshancF1 = [74, 61, 37, 73, 93, 64, 59, 97, 55, 79, 104, 100, 92, 78, 34, 105, 50, 102, 39, 72, 71, 35, 48, 119, 94, 117, 43, 86, 98, 90, 80, 107, 41, 54, 60, 81, 45, 32, 82, 91, 58, 116, 96, 118, 123, 69, 42, 38, 95, 76, 89, 51, 83, 67, 110, 124, 44, 112, 53, 103, 106, 114, 46, 101, 57, 109, 70, 121, 40, 120, 126, 36, 56, 85, 108, 47, 113, 68, 84, 125, 87, 111, 75, 122, 49, 115, 88, 99, 52, 77, 62, 65, 66, 63, 33];
 
 function convertString() {
-    s1 = new String(myForm.inText.value);
+    s1 = new String(document.getElementById('inText').value);
 
     var s2 = new String("");
 
@@ -44,8 +43,7 @@ function convertString() {
         }
     }
 
-    myForm.outText.value = s2;
+    document.getElementById('outText').value = s2;
 }
 
 </script>
-</form>
