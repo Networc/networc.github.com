@@ -8,6 +8,14 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
 <span id="twitter-connect-placeholder"></span>
 <script type="text/javascript">
    twttr.anywhere(function (T) {
+      T.linkifyUsers();
+   });
+
+   twttr.anywhere(function (T) {
+     T.hovercards();
+   });
+
+   twttr.anywhere(function (T) {
       var currentUser,
           screenName,
           profileImage,
@@ -18,7 +26,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          screenName = currentUser.data('screen_name');
          profileImage = currentUser.data('profile_image_url');
          profileImageTag = "<img src='" + profileImage + "'/>";
-         $('#twitter-connect-placeholder').append("Logged in as " + profileImageTag + " " + screenName);
+         $('#twitter-connect-placeholder').append("Logged in as " + profileImageTag + " @" + screenName);
          $("#twitter-connect-placeholder").append('<button id="signout" type="button">Sign out of Twitter</button>');
          $("#signout").bind("click", function () {
             twttr.anywhere.signOut();
