@@ -26,11 +26,34 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          screenName = currentUser.data('screen_name');
          profileImage = currentUser.data('profile_image_url');
          profileImageTag = "<img src='" + profileImage + "'/>";
-         $('#twitter-connect-placeholder').append("Logged in as " + profileImageTag + " @" + screenName);
+         $('#twitter-connect-placeholder').append("Logged in as " + profileImageTag + " @" + screenName + "<br />");
          $("#twitter-connect-placeholder").append('<button id="signout" type="button">Sign out of Twitter</button>');
          $("#signout").bind("click", function () {
             twttr.anywhere.signOut();
          });
+
+         $.ajax({  
+            url : "http://twitter.com/statuses/user_timeline/" + screenName + ".json?callback=?",  
+            dataType : "json",  
+            timeout:15000,  
+  
+            success : function(data)  
+               {  
+                  $("#data").html("Data successfully obtained! <br />");  
+                  for (i=0; i<data.length; i++)  
+                     {  
+                        $("#data").append("<p>" + data[i].text) +"</p>";  
+                        $("#data").append("<p>" + data[i].created_at +"</p>");  
+                     }  
+               },  
+  
+            error : function()  
+               {  
+                  alert("Failure!");  
+               },  
+         });
+
+         location.reload();
       } else {
          T("#twitter-connect-placeholder").connectButton();
       };
