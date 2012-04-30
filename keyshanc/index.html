@@ -19,7 +19,8 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
       var currentUser,
           screenName,
           profileImage,
-          profileImageTag;
+          profileImageTag,
+          urlScreenname;
 
       if (T.isConnected()) {
          currentUser = T.currentUser;
@@ -30,10 +31,13 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          $("#twitter-connect-placeholder").append('<button id="signout" type="button">Sign out of Twitter</button>');
          $("#signout").bind("click", function () {
             twttr.anywhere.signOut();
+            location.reload();
          });
+         $("#twitter-connect-placeholder").append('<span id="data"></span>');
 
+         urlScreenname = "http://twitter.com/statuses/user_timeline/" + screenName + ".json?callback=?";
          $.ajax({  
-            url : "http://twitter.com/statuses/user_timeline/" + screenName + ".json?callback=?",  
+            url : urlScreenname,  
             dataType : "json",  
             timeout:15000,  
   
