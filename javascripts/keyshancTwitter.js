@@ -152,59 +152,51 @@ function decryptKeyshancRT(encryptedString, password) {
     //locate the delimiter ¥
     var findYen = encryptedString.indexOf('¥');
 
-    //only perform the decryption steps if ¥ was found
-    if (findYen != -1)
+    if (findYen == -1)
     {
-        //everything to the right of the timestamp is assumed to be encrypted text
-        var s1 = new String(encryptedString.substring((findYen + 5)));
-
-        //the timestamp is comprised of the 4 characters to the right of ¥
-        var encryptedTimestamp = new String(encryptedString.substring((findYen + 1), (findYen + 5)));
-
-        //convert the timestamp back into the number of minutes since the Unix epoch
-        var decryptedTimestamp = convertTimestamp(encryptedTimestamp);
-
-        //recompute Keyshanc based on the timestamp from the message
-        var seed = createSeed(password);
-        var pin = hotp(seed,decryptedTimestamp,"dec8");
-        keyshanc(password.concat(pin));
-
-        var s2 = new String("");
-
-        for (x = 0; x < s1.length; x++) {
-            if (s1.charCodeAt(x) >= 32 && s1.charCodeAt(x) <= 126)
-            {
-                for (y = 0; y < 95; y++) {
-                    if (s1.charAt(x) == String.fromCharCode(keys[y]))
-                    {
-                        s2 = s2.concat(String.fromCharCode(y+32));
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                s2 = s2.concat(s1.charAt(x));
-            }
-        }
+        return encryptedString;
     }
 
-    //it is assumed that if ¥ is greater than 0, or if it's -1, then there is some plaintext
-    //to the left of ¥ that should be prepended to the decrypted message
-    if (findYen != 0)
-    {
-        if (findYen == -1)
+    //everything to the right of the timestamp is assumed to be encrypted text
+    var s1 = new String(encryptedString.substring((findYen + 5)));
+
+    //the timestamp is comprised of the 4 characters to the right of ¥
+    var encryptedTimestamp = new String(encryptedString.substring((findYen + 1), (findYen + 5)));
+
+    //convert the timestamp back into the number of minutes since the Unix epoch
+    var decryptedTimestamp = convertTimestamp(encryptedTimestamp);
+
+    //recompute Keyshanc based on the timestamp from the message
+    var seed = createSeed(password);
+    var pin = hotp(seed,decryptedTimestamp,"dec8");
+    keyshanc(password.concat(pin));
+
+    var s2 = new String("");
+
+    for (x = 0; x < s1.length; x++) {
+        if (s1.charCodeAt(x) >= 32 && s1.charCodeAt(x) <= 126)
         {
-            var plaintext = new String(encryptedString);
+            for (y = 0; y < 95; y++) {
+                if (s1.charAt(x) == String.fromCharCode(keys[y]))
+                {
+                    s2 = s2.concat(String.fromCharCode(y+32));
+                    break;
+                }
+            }
         }
         else
         {
-            var plaintext = new String(encryptedString.substring(0, findYen));
+            s2 = s2.concat(s1.charAt(x));
         }
-        s2 = plaintext.concat(s2);
     }
 
-    return s2;
+    //it is assumed that if ¥ is greater than 0, then there is some plaintext
+    //to the left of ¥ that should be prepended to the decrypted message
+    if (findYen > 0)
+    {
+        var plaintext = new String(encryptedString.substring(0, findYen));
+        return plaintext.concat(s2);
+    }
 }
 
 //Encrypt messages using Keyshanc Real-Time
