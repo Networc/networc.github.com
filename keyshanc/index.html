@@ -43,7 +43,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                   $("#data").html("Data successfully obtained! <br />");  
                   for (i=0; i<data.length; i++)  
                      {  
-                        $("#data").append("<p>" + data[i].text.linkify() +"</p>");  
+                        //$("#data").append("<p>" + data[i].text.linkify() +"</p>");  
                         $("#data").append("<p>" + relative_time(data[i].created_at) +"</p>");  
                      }
                   twttr.anywhere(function (T) {
