@@ -45,7 +45,10 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                      {  
                         $("#data").append("<p>" + data[i].text) +"</p>";  
                         $("#data").append("<p>" + data[i].created_at +"</p>");  
-                     }  
+                     }
+                  twttr.anywhere(function (T) {
+                     T.hovercards();
+                  });
                },  
   
             error : function()  
