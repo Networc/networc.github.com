@@ -147,51 +147,60 @@ function encryptKeyshanc() {
 }
 
 //Decrypt a message that was created using Keyshanc Real-Time
-//It pulls an encrypted message from a textarea named "encryptedText"
-//and outputs the decrypted message to a textarea named "decryptionOutput".
 function decryptKeyshancRT(encryptedString, password) {
 
     //locate the delimiter ¥
     var findYen = encryptedString.indexOf('¥');
 
-    //everything to the right of the timestamp is assumed to be encrypted text
-    var s1 = new String(encryptedString.substring((findYen + 5)));
+    //only perform the decryption steps if ¥ was found
+    if (findYen != -1)
+    {
+        //everything to the right of the timestamp is assumed to be encrypted text
+        var s1 = new String(encryptedString.substring((findYen + 5)));
 
-    //the timestamp is comprised of the 4 characters to the right of ¥
-    var encryptedTimestamp = new String(encryptedString.substring((findYen + 1), (findYen + 5)));
+        //the timestamp is comprised of the 4 characters to the right of ¥
+        var encryptedTimestamp = new String(encryptedString.substring((findYen + 1), (findYen + 5)));
 
-    //convert the timestamp back into the number of minutes since the Unix epoch
-    var decryptedTimestamp = convertTimestamp(encryptedTimestamp);
+        //convert the timestamp back into the number of minutes since the Unix epoch
+        var decryptedTimestamp = convertTimestamp(encryptedTimestamp);
 
-    //recompute Keyshanc based on the timestamp from the message
-    var seed = createSeed(password);
-    var pin = hotp(seed,decryptedTimestamp,"dec8");
-    keyshanc(password.concat(pin));
+        //recompute Keyshanc based on the timestamp from the message
+        var seed = createSeed(password);
+        var pin = hotp(seed,decryptedTimestamp,"dec8");
+        keyshanc(password.concat(pin));
 
-    var s2 = new String("");
+        var s2 = new String("");
 
-    for (x = 0; x < s1.length; x++) {
-        if (s1.charCodeAt(x) >= 32 && s1.charCodeAt(x) <= 126)
-        {
-            for (y = 0; y < 95; y++) {
-                if (s1.charAt(x) == String.fromCharCode(keys[y]))
-                {
-                    s2 = s2.concat(String.fromCharCode(y+32));
-                    break;
+        for (x = 0; x < s1.length; x++) {
+            if (s1.charCodeAt(x) >= 32 && s1.charCodeAt(x) <= 126)
+            {
+                for (y = 0; y < 95; y++) {
+                    if (s1.charAt(x) == String.fromCharCode(keys[y]))
+                    {
+                        s2 = s2.concat(String.fromCharCode(y+32));
+                        break;
+                    }
                 }
             }
-        }
-        else
-        {
-            s2 = s2.concat(s1.charAt(x));
+            else
+            {
+                s2 = s2.concat(s1.charAt(x));
+            }
         }
     }
 
-    //it is assumed that if ¥ is greater than 0, then there is some plaintext
+    //it is assumed that if ¥ is greater than 0, or if it's -1, then there is some plaintext
     //to the left of ¥ that should be prepended to the decrypted message
-    if (findYen > 0)
+    if (findYen != 0)
     {
-        var plaintext = new String(encryptedString.substring(0, findYen));
+        if (findYen == -1)
+        {
+            var plaintext = new String(encryptedString);
+        }
+        else
+        {
+            var plaintext = new String(encryptedString.substring(0, findYen));
+        }
         s2 = plaintext.concat(s2);
     }
 
