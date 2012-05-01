@@ -7,13 +7,6 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
 <p>This is the homepage for Keyshanc, the KEYboard SHA-based eNCrypter. Read more about keyshanc on <a href="http://andrewcreed.com/blog.html">my blog</a>.</p>
 <span id="twitter-connect-placeholder"></span>
 <script type="text/javascript">
-   twttr.anywhere(function (T) {
-      T.linkifyUsers();
-   });
-
-   twttr.anywhere(function (T) {
-     T.hovercards();
-   });
 
    twttr.anywhere(function (T) {
       var currentUser,
@@ -56,11 +49,17 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                   alert("Failure!");  
                },  
          });
-         T.linkifyUsers();
-         T.hovercards();
       } else {
          T("#twitter-connect-placeholder").connectButton();
       };
+   });
+
+   twttr.anywhere(function (T) {
+      T.linkifyUsers();
+   });
+
+   twttr.anywhere(function (T) {
+     T.hovercards();
    });
 </script>
 </div>
