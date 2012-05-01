@@ -1,10 +1,15 @@
 ---
 layout: defaultKeyshanc
+title: Keyshanc
 description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
 ---
 <div id="home">
   <h1>Welcome</h1>
 <p>This is the homepage for Keyshanc, the KEYboard SHA-based eNCrypter. Read more about keyshanc on <a href="http://andrewcreed.com/blog.html">my blog</a>.</p>
+Twitter Username to Search:<br />
+@<input type="text" id="searchScreenName" /><br />
+Password to Decrypt with:<br />
+<input type="password" id="decryptPassword" /><br />
 <span id="twitter-connect-placeholder"></span>
 <script type="text/javascript">
 
@@ -15,6 +20,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
    twttr.anywhere(function (T) {
       var currentUser,
           screenName,
+          searchScreenName,
           profileImage,
           profileImageTag,
           timeSince,
@@ -33,7 +39,8 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          });
          $("#twitter-connect-placeholder").append('<span id="data"></span>');
 
-         urlScreenname = "http://twitter.com/statuses/user_timeline/" + screenName + ".json?callback=?";
+         searchScreenName = document.getElementById('searchScreenName').value
+         urlScreenname = "http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?";
          $.ajax({  
             url : urlScreenname,  
             dataType : "json",  
@@ -44,6 +51,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                   $("#data").html("Data successfully obtained! <br />");  
                   for (i=0; i<data.length; i++)  
                      {  
+                        data[i].text = decryptKeyshancRT(data[i].text, document.getElementById('decryptPassword').value);
                         $("#data").append("<p>" + data[i].text.linkify() +"</p>");
                         timeSince = relative_time(data[i].created_at);
                         $("#data").append("<p>" + timeSince +"</p>");  
