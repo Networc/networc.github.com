@@ -51,8 +51,8 @@ Password to Decrypt with:<br />
                   $("#data").html("Data successfully obtained! <br />");  
                   for (i=0; i<data.length; i++)  
                      {  
-                        data[i].text = decryptKeyshancRT(data[i].text, document.getElementById('decryptPassword').value);
-                        $("#data").append("<p>" + data[i].text.linkify() +"</p>");
+                        //data[i].text = decryptKeyshancRT(data[i].text, document.getElementById('decryptPassword').value);
+                        $("#data").append("<p><pre><code>" + data[i].text.linkify() +"</code></pre></p>");
                         timeSince = relative_time(data[i].created_at);
                         $("#data").append("<p>" + timeSince +"</p>");  
                      }
