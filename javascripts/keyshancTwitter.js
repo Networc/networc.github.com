@@ -190,6 +190,8 @@ function decryptKeyshancRT(encryptedString, password) {
         }
     }
 
+    s2 = "<b>" + s2 + "</b>";
+
     //it is assumed that if ¥ is greater than 0, then there is some plaintext
     //to the left of ¥ that should be prepended to the decrypted message
     if (findYen > 0)
