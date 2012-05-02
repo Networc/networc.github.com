@@ -10,7 +10,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
 <div id="data"></div>
 <script type="text/javascript" charset="utf-8">
    $('#twitter-connect-placeholder').html('');
-   $("#data").html('');
+   $('#data').html('');
 
    twttr.anywhere(function (T) {
      T.hovercards();
@@ -40,7 +40,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          $('#twitter-connect-placeholder').append('<input type="password" id="decryptPassword" /><br />');
          $("#twitter-connect-placeholder").append('<button id="fetchAndDecrypt" type="button">Fetch and Decrypt Tweets</button><br />');
          $("#fetchAndDecrypt").bind("click", function () {
-            fetchAndDecrypt(document.getElementById('searchScreenName').value, document.getElementById('decryptPassword').value);
+            fetchTweets(document.getElementById('searchScreenName').value, document.getElementById('decryptPassword').value);
             location.reload();
          });
       } else {
@@ -48,9 +48,9 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
       };
    });
 
-   function fetchAndDecrypt(searchScreenName, password) {
+   function fetchTweets(searchScreenName, password) {
          
-         var urlScreenname = "http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?";
+         var urlScreenname = new String("http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?");
          $.ajax({  
             url : urlScreenname,  
             dataType : "json",  
