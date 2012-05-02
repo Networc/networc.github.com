@@ -159,7 +159,7 @@ function decryptKeyshancRT(encryptedString, password) {
 
     //everything to the right of the timestamp is assumed to be encrypted text
     var s1 = new String(encryptedString.substring((findYen + 5)));
-
+    return ("<pre><code>" + s1 + "</code></pre>");
     //the timestamp is comprised of the 4 characters to the right of ¥
     var encryptedTimestamp = new String(encryptedString.substring((findYen + 1), (findYen + 5)));
 
