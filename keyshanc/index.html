@@ -76,7 +76,6 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          $("#twitter-connect-placeholder").append('<button id="fetchAndDecrypt" type="button">Fetch and Decrypt Tweets</button><br />');
          $("#fetchAndDecrypt").bind("click", function () {
             fetchTweets(document.getElementById('searchScreenName').value, document.getElementById('decryptPassword').value);
-            location.reload();
          });
       } else {
          T("#twitter-connect-placeholder").connectButton();
