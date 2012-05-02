@@ -1,5 +1,38 @@
-   $('#twitter-connect-placeholder').html('');
-   $("#data").html("<br />");
+   function fetchTweets(searchScreenName, password) {
+         
+         var urlScreenname = new String("http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?");
+         $.ajax({  
+            url : urlScreenname,  
+            dataType : "json",  
+            timeout:15000,  
+  
+            success : function(data)  
+               {  
+                  $('#data').html('');
+                  for (i=0; i<data.length; i++)  
+                     {  
+                        $('#data').append("<hr /><p>" + data[i].text.linkify() + "</p>");
+                        if ((data[i].text.indexOf('¥')) != -1)
+                        {
+                           data[i].text = Encoder.htmlDecode(data[i].text);
+                           data[i].text = decryptKeyshancRT(data[i].text, password);
+                           data[i].text = Encoder.htmlEncode(data[i].text, false);
+                           $("#data").append("<p>" + data[i].text.linkify() + "</p>");
+                        }
+                        timeSince = relative_time(data[i].created_at);
+                        $('#data').append("<p>" + timeSince + "</p>");  
+                     }
+                  twttr.anywhere(function (T) {
+                     T.hovercards();
+                  });
+               },  
+  
+            error : function()  
+               {  
+                  alert("Failure!");  
+               },  
+         });
+   }
 
    twttr.anywhere(function (T) {
      T.hovercards();
@@ -17,7 +50,7 @@
          screenName = currentUser.data('screen_name');
          profileImage = currentUser.data('profile_image_url');
          profileImageTag = "<img src='" + profileImage + "'/>";
-         $('#twitter-connect-placeholder').append("Logged in as " + profileImageTag + " @" + screenName + "<br />");
+         $('#twitter-connect-placeholder').html("Logged in as " + profileImageTag + " @" + screenName + "<br />");
          $("#twitter-connect-placeholder").append('<button id="signout" type="button">Sign out of Twitter</button><br />');
          $("#signout").bind("click", function () {
             twttr.anywhere.signOut();
@@ -29,48 +62,14 @@
          $('#twitter-connect-placeholder').append('<input type="password" id="decryptPassword" /><br />');
          $("#twitter-connect-placeholder").append('<button id="fetchAndDecrypt" type="button">Fetch and Decrypt Tweets</button><br />');
          $("#fetchAndDecrypt").bind("click", function () {
-            fetchAndDecrypt(document.getElementById('searchScreenName').value, document.getElementById('decryptPassword').value);
-            location.reload();
+            fetchTweets(document.getElementById('searchScreenName').value, document.getElementById('decryptPassword').value);
          });
       } else {
          T("#twitter-connect-placeholder").connectButton();
       };
    });
 
-   function fetchAndDecrypt(searchScreenName, password) {
-         
-         var urlScreenname = "http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?";
-         $.ajax({  
-            url : urlScreenname,  
-            dataType : "json",  
-            timeout:15000,  
-  
-            success : function(data)  
-               {  
-                  for (i=0; i<data.length; i++)  
-                     {  
-                        $("#data").append("<hr /><p>" + data[i].text.linkify() +"</p>");
-                        if ((data[i].text.indexOf('¥')) != -1)
-                        {
-                           data[i].text = Encoder.htmlDecode(data[i].text);
-                           data[i].text = decryptKeyshancRT(data[i].text, password);
-                           data[i].text = Encoder.htmlEncode(data[i].text, false);
-                           $("#data").append("<p>" + data[i].text.linkify() +"</p>");
-                        }
-                        timeSince = relative_time(data[i].created_at);
-                        $("#data").append("<p>" + timeSince +"</p>");  
-                     }
-                  twttr.anywhere(function (T) {
-                     T.hovercards();
-                  });
-               },  
-  
-            error : function()  
-               {  
-                  alert("Failure!");  
-               },  
-         });
-   }
+
 
 // Convert Twitter API Timestamp to "Time Ago"
 
