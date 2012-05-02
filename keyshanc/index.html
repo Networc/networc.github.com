@@ -5,12 +5,47 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
 ---
 <div id="home">
   <h1>Welcome</h1>
-<p>This is the homepage for Keyshanc, the KEYboard SHA-based eNCrypter. Read more about keyshanc on <a href="http://andrewcreed.com/blog.html">my blog</a>.</p>
+<p>This is the homepage for Keyshanc, the KEYboard SHA-based eNCrypter. Read more about Keyshanc on <a href="http://andrewcreed.com/blog.html">my blog</a>.</p>
 <div id="twitter-connect-placeholder"></div>
 <div id="data"></div>
+</div>
 <script type="text/javascript" charset="utf-8">
-   $('#twitter-connect-placeholder').html('');
-   $('#data').html('');
+
+   function fetchTweets(searchScreenName, password) {
+         
+         var urlScreenname = new String("http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?");
+         $.ajax({  
+            url : urlScreenname,  
+            dataType : "json",  
+            timeout:15000,  
+  
+            success : function(data)  
+               {  
+                  $('#data').html('');
+                  for (i=0; i<data.length; i++)  
+                     {  
+                        $('#data').append("<hr /><p>" + data[i].text.linkify() + "</p>");
+                        if ((data[i].text.indexOf('¥')) != -1)
+                        {
+                           data[i].text = Encoder.htmlDecode(data[i].text);
+                           data[i].text = decryptKeyshancRT(data[i].text, password);
+                           data[i].text = Encoder.htmlEncode(data[i].text, false);
+                           $("#data").append("<p>" + data[i].text.linkify() + "</p>");
+                        }
+                        timeSince = relative_time(data[i].created_at);
+                        $('#data').append("<p>" + timeSince + "</p>");  
+                     }
+                  twttr.anywhere(function (T) {
+                     T.hovercards();
+                  });
+               },  
+  
+            error : function()  
+               {  
+                  alert("Failure!");  
+               },  
+         });
+   }
 
    twttr.anywhere(function (T) {
      T.hovercards();
@@ -28,7 +63,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          screenName = currentUser.data('screen_name');
          profileImage = currentUser.data('profile_image_url');
          profileImageTag = "<img src='" + profileImage + "'/>";
-         $('#twitter-connect-placeholder').append("Logged in as " + profileImageTag + " @" + screenName + "<br />");
+         $('#twitter-connect-placeholder').html("Logged in as " + profileImageTag + " @" + screenName + "<br />");
          $("#twitter-connect-placeholder").append('<button id="signout" type="button">Sign out of Twitter</button><br />');
          $("#signout").bind("click", function () {
             twttr.anywhere.signOut();
@@ -48,40 +83,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
       };
    });
 
-   function fetchTweets(searchScreenName, password) {
-         
-         var urlScreenname = new String("http://twitter.com/statuses/user_timeline/" + searchScreenName + ".json?callback=?");
-         $.ajax({  
-            url : urlScreenname,  
-            dataType : "json",  
-            timeout:15000,  
-  
-            success : function(data)  
-               {  
-                  for (i=0; i<data.length; i++)  
-                     {  
-                        $("#data").append("<hr /><p>" + data[i].text.linkify() +"</p>");
-                        if ((data[i].text.indexOf('¥')) != -1)
-                        {
-                           data[i].text = Encoder.htmlDecode(data[i].text);
-                           data[i].text = decryptKeyshancRT(data[i].text, password);
-                           data[i].text = Encoder.htmlEncode(data[i].text, false);
-                           $("#data").append("<p>" + data[i].text.linkify() +"</p>");
-                        }
-                        timeSince = relative_time(data[i].created_at);
-                        $("#data").append("<p>" + timeSince +"</p>");  
-                     }
-                  twttr.anywhere(function (T) {
-                     T.hovercards();
-                  });
-               },  
-  
-            error : function()  
-               {  
-                  alert("Failure!");  
-               },  
-         });
-   }
+
 
 // Convert Twitter API Timestamp to "Time Ago"
 
@@ -121,4 +123,3 @@ String.prototype.linkify = function() {
       });
 }
 </script>
-</div>
