@@ -56,7 +56,7 @@ Password to Decrypt with:<br />
                         {
                            data[i].text = htmlDecode(data[i].text);
                            data[i].text = decryptKeyshancRT(data[i].text, document.getElementById('decryptPassword').value);
-                           data[i].text = htmlEncode(data[i].text);
+                           data[i].text = htmlEncode(data[i].text, false);
                            $("#data").append("<p>" + data[i].text.linkify() +"</p>");
                         }
                         timeSince = relative_time(data[i].created_at);
