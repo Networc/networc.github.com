@@ -9,6 +9,8 @@
           profileImageTag,
           timeSince;
 
+      $('#twitter-connect-placeholder').html('');
+
       if (T.isConnected()) {
          currentUser = T.currentUser;
          screenName = currentUser.data('screen_name');
