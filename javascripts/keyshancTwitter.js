@@ -190,8 +190,6 @@ function decryptKeyshancRT(encryptedString, password) {
         }
     }
 
-    s2 = "<b>" + s2 + "</b>";
-
     //it is assumed that if ¥ is greater than 0, then there is some plaintext
     //to the left of ¥ that should be prepended to the decrypted message
     if (findYen > 0)
@@ -199,6 +197,8 @@ function decryptKeyshancRT(encryptedString, password) {
         var plaintext = new String(encryptedString.substring(0, findYen));
         return plaintext.concat(s2);
     }
+    
+    return s2;
 }
 
 //Encrypt messages using Keyshanc Real-Time
