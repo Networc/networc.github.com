@@ -54,9 +54,9 @@ Password to Decrypt with:<br />
                         $("#data").append("<hr /><p>" + data[i].text.linkify() +"</p>");
                         if ((data[i].text.indexOf('¥')) != -1)
                         {
-                           data[i].text = htmlDecode(data[i].text);
+                           data[i].text = Encoder.htmlDecode(data[i].text);
                            data[i].text = decryptKeyshancRT(data[i].text, document.getElementById('decryptPassword').value);
-                           data[i].text = htmlEncode(data[i].text, false);
+                           data[i].text = Encoder.htmlEncode(data[i].text, false);
                            $("#data").append("<p>" + data[i].text.linkify() +"</p>");
                         }
                         timeSince = relative_time(data[i].created_at);
