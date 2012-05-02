@@ -1,3 +1,6 @@
+   $('#twitter-connect-placeholder').html('');
+   $("#data").html("<br />");
+
    twttr.anywhere(function (T) {
      T.hovercards();
    });
@@ -8,8 +11,6 @@
           profileImage,
           profileImageTag,
           timeSince;
-
-      $('#twitter-connect-placeholder').html('');
 
       if (T.isConnected()) {
          currentUser = T.currentUser;
@@ -46,7 +47,6 @@
   
             success : function(data)  
                {  
-                  $("#data").html("<br />");  
                   for (i=0; i<data.length; i++)  
                      {  
                         $("#data").append("<hr /><p>" + data[i].text.linkify() +"</p>");
