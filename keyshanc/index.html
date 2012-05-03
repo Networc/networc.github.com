@@ -76,6 +76,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          $('#twitter-connect-placeholder').append('<textarea rows="4" cols="60" id="plainText"></textarea><br />');
          $("#plainText").bind("keypress", function () {
             encryptedTweet = encryptKeyshancRT(document.getElementById('encryptPassword').value);
+            $("#dynamicTweet").html('');
             T("#dynamicTweet").tweetBox({
                label: "Keyshanc Output",
                defaultContent: encryptedTweet
@@ -85,6 +86,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
          $('#twitter-connect-placeholder').append('<textarea rows="4" cols="60" id="inText"></textarea><br />');
          $("#inText").bind("keypress", function () {
             encryptedTweet = encryptKeyshancRT(document.getElementById('encryptPassword').value);
+            $("#dynamicTweet").html('');
             T("#dynamicTweet").tweetBox({
                label: "Keyshanc Output",
                defaultContent: encryptedTweet
