@@ -258,7 +258,8 @@ function encryptKeyshancRT(password) {
         s2 = plaintext + " " + s2;
     }
 
-    document.getElementById('outText').value = s2;
+    //document.getElementById('outText').value = s2;
+    return s2;
 }
 
 //Use the password to create a seed for the HOTP function.
