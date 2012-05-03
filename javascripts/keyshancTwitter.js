@@ -149,6 +149,8 @@ function encryptKeyshanc() {
 //Decrypt a message that was created using Keyshanc Real-Time
 function decryptKeyshancRT(encryptedString, password) {
 
+    encryptedString = Encoder.htmlDecode(encryptedString);
+
     //locate the delimiter ¥
     var findYen = encryptedString.indexOf('¥');
 
@@ -189,6 +191,10 @@ function decryptKeyshancRT(encryptedString, password) {
             s2 = s2.concat(s1.charAt(x));
         }
     }
+
+    s2 = Encoder.htmlEncode(s2, false);
+
+    s2 = "<b>" + s2 + "</b>";
 
     //it is assumed that if ¥ is greater than 0, then there is some plaintext
     //to the left of ¥ that should be prepended to the decrypted message
@@ -258,7 +264,6 @@ function encryptKeyshancRT(password) {
         s2 = plaintext + " " + s2;
     }
 
-    //document.getElementById('outText').value = s2;
     return s2;
 }
 

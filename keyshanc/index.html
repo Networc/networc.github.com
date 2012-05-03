@@ -26,9 +26,9 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                         $('#data').append("<hr /><p>" + data[i].text.linkify() + "</p>");
                         if ((data[i].text.indexOf('¥')) != -1)
                         {
-                           data[i].text = Encoder.htmlDecode(data[i].text);
+                           //data[i].text = Encoder.htmlDecode(data[i].text);
                            data[i].text = decryptKeyshancRT(data[i].text, password);
-                           data[i].text = Encoder.htmlEncode(data[i].text, false);
+                           //data[i].text = Encoder.htmlEncode(data[i].text, false);
                            $("#data").append("<p>" + data[i].text.linkify() + "</p>");
                         }
                         timeSince = relative_time(data[i].created_at);
@@ -92,14 +92,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                defaultContent: encryptedTweet
             });
          });
-         //$('#twitter-connect-placeholder').append("KeyshancRT Output:<br />");
-         //$('#twitter-connect-placeholder').append('<textarea rows="4" cols="60" id="outText"></textarea><br />');
-         //$("#twitter-connect-placeholder").append('<button id="commitTweet" type="button">Commit to Tweet</button><br />');
-         //$("#commitTweet").bind("click", function () {
-         //   generateTweetRT(document.getElementById('outText').value);
-         //});
          $('#twitter-connect-placeholder').append('<div id="dynamicTweet"></div><br /><hr />');
-         //$('#twitter-connect-placeholder').append("<hr />");
          $('#twitter-connect-placeholder').append("<h2>Decrypt a User's Tweets</h2>");
          $('#twitter-connect-placeholder').append("Twitter Username to Search:<br />");
          $('#twitter-connect-placeholder').append('@<input type="text" id="searchScreenName" /><br />');
