@@ -33,6 +33,9 @@ SOFTWARE.
 //ALSO: KeyshancRT requires hotp.js, avail. @ github.com/adulau/hotp-js
 //& 2.0.0-crypto-sha1.js & 2.0.0-hmac-min.js, avail. @ crypto-js.googlecode.com
 
+//ALSO: decryptKeyshancRT requires encoder.js, available at
+//http://strictly-software.com/scripts/downloads/encoder.js
+
 var minutes = 1000*60;
 var minuteCounter = 0;
 var timestamp = new String("");
@@ -156,7 +159,7 @@ function decryptKeyshancRT(encryptedString, password) {
 
     if (findYen == -1)
     {
-        return encryptedString;
+        return Encoder.htmlEncode(encryptedString, false);
     }
 
     //everything to the right of the timestamp is assumed to be encrypted text
@@ -192,8 +195,10 @@ function decryptKeyshancRT(encryptedString, password) {
         }
     }
 
+    //encode the encrypted text before adding the bold tags
     s2 = Encoder.htmlEncode(s2, false);
 
+    //add the bold tags
     s2 = "<b>" + s2 + "</b>";
 
     //it is assumed that if ¥ is greater than 0, then there is some plaintext
@@ -201,6 +206,7 @@ function decryptKeyshancRT(encryptedString, password) {
     if (findYen > 0)
     {
         var plaintext = new String(encryptedString.substring(0, findYen));
+        plaintext = Encoder.htmlEncode(plaintext, false);
         return plaintext.concat(s2);
     }
     

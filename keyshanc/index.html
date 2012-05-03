@@ -23,14 +23,8 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
                   $('#data').html('');
                   for (i=0; i<data.length; i++)  
                      {  
+                        data[i].text = decryptKeyshancRT(data[i].text, password);
                         $('#data').append("<hr /><p>" + data[i].text.linkify() + "</p>");
-                        if ((data[i].text.indexOf('¥')) != -1)
-                        {
-                           //data[i].text = Encoder.htmlDecode(data[i].text);
-                           data[i].text = decryptKeyshancRT(data[i].text, password);
-                           //data[i].text = Encoder.htmlEncode(data[i].text, false);
-                           $("#data").append("<p>" + data[i].text.linkify() + "</p>");
-                        }
                         timeSince = relative_time(data[i].created_at);
                         $('#data').append("<p>" + timeSince + "</p>");  
                      }
