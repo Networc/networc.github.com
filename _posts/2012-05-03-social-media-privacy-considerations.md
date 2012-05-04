@@ -6,7 +6,7 @@ description: Key questions to ask before choosing a service that promises privac
 keywords: keyshanc, social media, privacy, security
 hashtag: keyshanc
 ---
-As recent news surrounding SOPA and CISPA have pushed privacy to the forefront of our national discourse, and as rebellions against oppressive governments continue to rage in other countries, several services promoting "privacy" for social media are hoping to capitalize on this rising fear and mistrust. Two such sites are <a href="https://scrambls.com/">scrambls</a> and <a href="https://priv.ly/">Privly</a>. Both sites employ different technical approaches to achieve a similar goal: limit access to social media postings to those individuals that you specify.
+As recent news surrounding SOPA and CISPA have pushed privacy to the forefront of our national discourse, and as rebellions against oppressive governments continue to rage in other countries, several services promoting "privacy" for social media are hoping to capitalize on this rising fear and distrust. Two such sites are <a href="https://scrambls.com/">scrambls</a> and <a href="https://priv.ly/">Privly</a>. Both sites employ different technical approaches to achieve a similar goal: limit access to social media postings to those individuals that you specify.
 
 In light of this political fervor at home and crackdowns on political activists abroad, I think that it is imperative that we consider the following:
 
