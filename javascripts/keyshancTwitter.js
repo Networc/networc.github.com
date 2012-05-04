@@ -27,9 +27,6 @@ SOFTWARE.
 //NOTE: This script requires sha512-min.js, sha256-min.js, and sha1-min.js
 //They can be obtained from http://pajhome.org.uk/crypt/md5/jshash-2.2.zip
 
-//ALSO: The dynamicTweet/generateTweet portions require jQuery
-//Available from http://jquery.com
-
 //ALSO: KeyshancRT requires hotp.js, avail. @ github.com/adulau/hotp-js
 //& 2.0.0-crypto-sha1.js & 2.0.0-hmac-min.js, avail. @ crypto-js.googlecode.com
 
@@ -47,12 +44,6 @@ var keys = new Array(95);
 for (x = 0; x < 95; x++) {
     keys[x] = (x + 32);
 }
-
-//jQuery code for the Dynamic Tweet button which sends the ciphertext
-//    Place the following DIV in your html where you want the Dynamic Tweet
-//    button to appear
-//    <div id="dynamicTweet"></div>
-$('#dynamicTweet').html('');
 
 function keyshanc(password) {
     var i = new String(hex_sha512(password));
@@ -216,8 +207,7 @@ function decryptKeyshancRT(encryptedString, password) {
 //Encrypt messages using Keyshanc Real-Time
 //It encrypts the text located in the textarea named "inText".
 //Any text located in the textarea named "plainText" will not be
-//encrypted. The final message is output to the textarea named
-//"outText".
+//encrypted.
 function encryptKeyshancRT(password) {
     //update the time with every keystroke
     //time is based on the minutes since the Unix epoch
@@ -325,23 +315,4 @@ function convertTimestamp(messageTimestamp) {
     messageCounter += ((Math.pow(94, 1)) * power1);
     messageCounter += ((Math.pow(94, 0)) * power0);
     return messageCounter;
-}
-
-function generateTweet(tweetText) {
-    tweetText = encodeURIComponent(tweetText);
-    tweetText = tweetText.replace(/`/g, "%60");
-    tweetText = tweetText.replace(/\'/g, "%27");
-    $('#dynamicTweet').html("\
-<iframe allowtransparency='true' frameborder='0' scrolling='no' src='http://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText + "%20decrypt%20at%20http%3A%2F%2Fandrewcreed.com%2F2012%2F04%2F16%2Fkeyshanc-ported-to-javascript.html%20encrypt%20at&hashtags=keyshanc&count=none' style='width:115px; height:21px;'></iframe>\
-<br />");
-}
-
-//This Tweet button doesn't have the extra URL & hashtag.
-function generateTweetRT(tweetText) {
-    tweetText = encodeURIComponent(tweetText);
-    tweetText = tweetText.replace(/`/g, "%60");
-    tweetText = tweetText.replace(/\'/g, "%27");
-    $('#dynamicTweet').html("\
-<iframe allowtransparency='true' frameborder='0' scrolling='no' src='http://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText + "&count=none' style='width:115px; height:21px;'></iframe>\
-<br />");
 }
