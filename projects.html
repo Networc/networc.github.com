@@ -12,7 +12,7 @@ description: Andrew C. Reed's open source projects.
     $('#github-projects').html(''); 
     $.githubUser('Networc', function(data) {    
     
-    var repos = data.user.repositories;
+    var repos = data.data;
     repos.sort(function(a,b) {
       return b.watchers - a.watchers;
     });
