@@ -18,5 +18,5 @@ As an example, the content of a blog post would be © Copyright Andrew C. Reed; 
 
 * Theme and code from [Tom Preston-Werner](https://github.com/mojombo/mojombo.github.com)
 * Meta data generation code from [Bilal Hussain](https://github.com/Bilalh/bilalh.github.com/tree/source)
-* GitHub repo listing code from [Matthew Deiters](https://github.com/mdeiters/mdeiters.github.com)
+* GitHub repo listing code from [Roland Yonaba](https://github.com/Yonaba/yonaba.github.com)
 * Sitemap generation code from [Jade](https://github.com/plusjade/jekyll-bootstrap)
