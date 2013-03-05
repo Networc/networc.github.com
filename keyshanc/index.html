@@ -21,7 +21,7 @@ description: Homepage for Keyshanc, the KEYboard SHA-based eNCrypter.
 <script type="text/javascript" charset="utf-8">
    function fetchTweets(searchScreenName, password) {
          
-         var urlScreenname = new String("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + searchScreenName + "&count=2");
+         var urlScreenname = new String("https://api.twitter.com/1/statuses/user_timeline.json?screen_name=" + searchScreenName + ".json?callback=twitterCallback2&count=5");
          $.ajax({  
             url : urlScreenname,  
             dataType : "json",  
